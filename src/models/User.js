@@ -1,4 +1,5 @@
 "use strict";
+
 const UserStorage = require("./UserStorage");
 
 class User{
@@ -8,16 +9,20 @@ class User{
 
     async login(){
         const client = this.body;
-        const { id, password } = await UserStorage.getUserInfo(client.id);
+        try{
+            const user = await UserStorage.getUserInfo(client.id);
 
-        if(id){
-            if(id === client.id && password === client.password){
-                return { success: true};
+            if(user){
+                if(user.id === client.id && user.password === client.password){
+                    return { success: true};
+                }else{
+                    return { success: false, msg: "비밀번호가 일치하지 않습니다."};
+                }
             }else{
-                return { success: false, msg: "비밀번호가 일치하지 않습니다."};
+                return { success: false, msg: "존재하지 않는 아이디입니다."};
             }
-        }else{
-            return { success: false, msg: "존재하지 않는 아이디입니다."};
+        }catch(err){
+            return { success: false, msg: err };
         }
     }
 
