@@ -22,7 +22,7 @@ function login(){
     .then((res) => res.json())
     .then((res) => {
         if(res.success){
-            location.href = "/";
+            location.href = "/login_index";
         }else{
             alert(res.msg);
         }
