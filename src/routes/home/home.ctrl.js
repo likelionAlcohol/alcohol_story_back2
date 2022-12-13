@@ -22,7 +22,8 @@ const output = {
         res.render("home/index");
     },
     myPage: (req,res) => {
-        res.render("home/myPage", { user });
+        let { user } = req.session;
+        res.render("home/myPage", user);
     },
     message: (req,res) => {
         res.render("home/message");
