@@ -24,8 +24,8 @@ const output = {
     myPage: (req,res) => {
         res.render("home/myPage", { user });
     },
-    post: (req,res) => {
-        res.render("home/post");
+    message: (req,res) => {
+        res.render("home/message");
     }
 };
 

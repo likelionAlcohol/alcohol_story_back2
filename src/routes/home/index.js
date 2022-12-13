@@ -11,7 +11,7 @@ router.get("/login", ctrl.output.login);
 router.get("/register", ctrl.output.register);
 router.get("/logout", ctrl.output.logout);
 router.get("/myPage", ctrl.output.myPage);
-router.get("/post", ctrl.output.post);
+router.get("/message", ctrl.output.message);
 
 router.post("/login", ctrl.process.login);
 router.post("/register", ctrl.process.register);
